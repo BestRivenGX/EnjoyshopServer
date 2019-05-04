@@ -17,7 +17,7 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-//  根据ID查询.
+//  根据ID查询...
 //    @PataVariable:用于获取url中的数据
     @GetMapping(value = "loginRequest/query/{id}")
     public LoginRequest getUserById(@PathVariable(value = "id") Integer id){
