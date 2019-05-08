@@ -1,31 +1,22 @@
 package com.example.demo5.vo;
 
 public class LoginVO {
-    String namel;
-    String sex;
-    String hige;
+    String username;
+    String account;
 
-    public String getNamel() {
-        return namel;
+    public String getUsername() {
+        return username;
     }
 
-    public void setNamel(String namel) {
-        this.namel = namel;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    public String getSex() {
-        return sex;
+    public String getAccount() {
+        return account;
     }
 
-    public void setSex(String sex) {
-        this.sex = sex;
-    }
-
-    public String getHige() {
-        return hige;
-    }
-
-    public void setHige(String hige) {
-        this.hige = hige;
+    public void setAccount(String account) {
+        this.account = account;
     }
 }
