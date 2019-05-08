@@ -4,29 +4,44 @@
 
 <!--suppress MybatisGenerateCustomPluginInspection -->
 <generatorConfiguration>
+    <!-- 引入配置文件 -->
     <properties resource="application.properties"/>
-
+    <!-- 一个数据库一个context -->
     <context id="mbg" targetRuntime="MyBatis3DynamicSQL">
+        <!-- 注释 -->
         <commentGenerator>
-            <property name="suppressAllComments" value="true"/>
+            <property name="suppressAllComments" value="true"/><!-- 是否取消注释 -->
         </commentGenerator>
+        <!-- jdbc连接 -->
         <jdbcConnection driverClass="${spring.datasource.driver-class-name}"
                         connectionURL="${spring.datasource.url}"
                         userId="${spring.datasource.username}"
                         password="${spring.datasource.password}">
         </jdbcConnection>
-        <javaModelGenerator targetPackage="com.example.demo.model"
+        <!-- 生成实体类地址 -->
+        <javaModelGenerator targetPackage="com.example.demo5.model"
                             targetProject="src/main/java">
+            <!-- 是否在当前路径下新加一层schema,eg：fase路径com.oop.eksp.user.model， true:com.oop.eksp.user.model.[schemaName] -->
             <property name="enableSubPackages" value="false"/>
+            <!-- 是否针对string类型的字段在set的时候进行trim调用 -->
             <property name="trimStrings" value="true"/>
         </javaModelGenerator>
+        <!-- 生成mapxml对应client，也就是接口dao -->
         <javaClientGenerator type="ANNOTATEDMAPPER"
-                             targetPackage="com.example.demo.dao"
+                             targetPackage="com.example.demo5.dao"
                              targetProject="src/main/java">
             <property name="enableSubPackages" value="false"/>
         </javaClientGenerator>
 
+
+
+
+
+
         <table tableName="user">
+            <generatedKey column="id" sqlStatement="JDBC"/>
+        </table>
+        <table tableName="query">
             <generatedKey column="id" sqlStatement="JDBC"/>
         </table>
 

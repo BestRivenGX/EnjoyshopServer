@@ -1,6 +1,6 @@
 package com.example.demo5;
 
-import com.example.demo5.mapper.UserMapper;
+import com.example.demo5.dao.UserMapper;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
