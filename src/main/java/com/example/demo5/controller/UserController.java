@@ -16,7 +16,7 @@ public class UserController {
     public UserController(UserService userService) {
         this.userService = userService;
     }
-//  根据ID查询...
+//  根据username查询...
 //    @PataVariable:用于获取url中的数据
 @RequestMapping("/get")
 @ResponseBody
