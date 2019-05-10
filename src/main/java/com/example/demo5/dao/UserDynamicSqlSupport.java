@@ -22,6 +22,12 @@ public final class UserDynamicSqlSupport {
     public static final SqlColumn<String> username = user.username;
 
     @Generated("org.mybatis.generator.api.MyBatisGenerator")
+    public static final SqlColumn<Integer> status = user.status;
+
+    @Generated("org.mybatis.generator.api.MyBatisGenerator")
+    public static final SqlColumn<String> token = user.token;
+
+    @Generated("org.mybatis.generator.api.MyBatisGenerator")
     public static final class User extends SqlTable {
         public final SqlColumn<Integer> id = column("id", JDBCType.INTEGER);
 
@@ -30,6 +36,10 @@ public final class UserDynamicSqlSupport {
         public final SqlColumn<String> password = column("password", JDBCType.VARCHAR);
 
         public final SqlColumn<String> username = column("username", JDBCType.VARCHAR);
+
+        public final SqlColumn<Integer> status = column("status", JDBCType.INTEGER);
+
+        public final SqlColumn<String> token = column("token", JDBCType.VARCHAR);
 
         public User() {
             super("user");

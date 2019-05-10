@@ -16,6 +16,12 @@ public class User {
     private String username;
 
     @Generated("org.mybatis.generator.api.MyBatisGenerator")
+    private Integer status;
+
+    @Generated("org.mybatis.generator.api.MyBatisGenerator")
+    private String token;
+
+    @Generated("org.mybatis.generator.api.MyBatisGenerator")
     public Integer getId() {
         return id;
     }
@@ -53,5 +59,25 @@ public class User {
     @Generated("org.mybatis.generator.api.MyBatisGenerator")
     public void setUsername(String username) {
         this.username = username == null ? null : username.trim();
+    }
+
+    @Generated("org.mybatis.generator.api.MyBatisGenerator")
+    public Integer getStatus() {
+        return status;
+    }
+
+    @Generated("org.mybatis.generator.api.MyBatisGenerator")
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
+
+    @Generated("org.mybatis.generator.api.MyBatisGenerator")
+    public String getToken() {
+        return token;
+    }
+
+    @Generated("org.mybatis.generator.api.MyBatisGenerator")
+    public void setToken(String token) {
+        this.token = token == null ? null : token.trim();
     }
 }

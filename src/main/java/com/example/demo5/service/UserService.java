@@ -22,12 +22,12 @@ public class UserService {
     }
 
     public LoginVO login(UserRequest userRequest) {
-        List<User> loginByUsername = userMapper.
-                selectByExample().
-                where(user.username, isEqualTo(userRequest.username)).
-                and(user.password,isEqualTo(userRequest.password)).
-                build().
-                execute();
+        List<User> loginByUsername = userMapper
+                .selectByExample()
+                .where(user.username, isEqualTo(userRequest.username))
+                .and(user.password,isEqualTo(userRequest.password))
+                .build()
+                .execute();
 
         if (loginByUsername.size() != 1) {
             throw new RuntimeException("用户不存在或密码错误");
@@ -37,6 +37,9 @@ public class UserService {
         LoginVO vo = new LoginVO();
         vo.setUsername(record.getUsername());
         vo.setAccount(record.getAccount());
+        vo.setStatus(record.getStatus());
+        vo.setToken(record.getToken());
         return vo;
     }
+
 }

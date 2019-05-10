@@ -57,7 +57,9 @@ public interface UserMapper {
         @Result(column="id", property="id", jdbcType=JdbcType.INTEGER, id=true),
         @Result(column="account", property="account", jdbcType=JdbcType.VARCHAR),
         @Result(column="password", property="password", jdbcType=JdbcType.VARCHAR),
-        @Result(column="username", property="username", jdbcType=JdbcType.VARCHAR)
+        @Result(column="username", property="username", jdbcType=JdbcType.VARCHAR),
+        @Result(column="status", property="status", jdbcType=JdbcType.INTEGER),
+        @Result(column="token", property="token", jdbcType=JdbcType.VARCHAR)
     })
     List<User> selectMany(SelectStatementProvider selectStatement);
 
@@ -91,6 +93,8 @@ public interface UserMapper {
                 .map(account).toProperty("account")
                 .map(password).toProperty("password")
                 .map(username).toProperty("username")
+                .map(status).toProperty("status")
+                .map(token).toProperty("token")
                 .build()
                 .render(RenderingStrategy.MYBATIS3));
     }
@@ -102,25 +106,27 @@ public interface UserMapper {
                 .map(account).toPropertyWhenPresent("account", record::getAccount)
                 .map(password).toPropertyWhenPresent("password", record::getPassword)
                 .map(username).toPropertyWhenPresent("username", record::getUsername)
+                .map(status).toPropertyWhenPresent("status", record::getStatus)
+                .map(token).toPropertyWhenPresent("token", record::getToken)
                 .build()
                 .render(RenderingStrategy.MYBATIS3));
     }
 
     @Generated("org.mybatis.generator.api.MyBatisGenerator")
     default QueryExpressionDSL<MyBatis3SelectModelAdapter<List<User>>> selectByExample() {
-        return SelectDSL.selectWithMapper(this::selectMany, id, account, password, username)
+        return SelectDSL.selectWithMapper(this::selectMany, id, account, password, username, status, token)
                 .from(user);
     }
 
     @Generated("org.mybatis.generator.api.MyBatisGenerator")
     default QueryExpressionDSL<MyBatis3SelectModelAdapter<List<User>>> selectDistinctByExample() {
-        return SelectDSL.selectDistinctWithMapper(this::selectMany, id, account, password, username)
+        return SelectDSL.selectDistinctWithMapper(this::selectMany, id, account, password, username, status, token)
                 .from(user);
     }
 
     @Generated("org.mybatis.generator.api.MyBatisGenerator")
     default User selectByPrimaryKey(Integer id_) {
-        return SelectDSL.selectWithMapper(this::selectOne, id, account, password, username)
+        return SelectDSL.selectWithMapper(this::selectOne, id, account, password, username, status, token)
                 .from(user)
                 .where(id, isEqualTo(id_))
                 .build()
@@ -132,7 +138,9 @@ public interface UserMapper {
         return UpdateDSL.updateWithMapper(this::update, user)
                 .set(account).equalTo(record::getAccount)
                 .set(password).equalTo(record::getPassword)
-                .set(username).equalTo(record::getUsername);
+                .set(username).equalTo(record::getUsername)
+                .set(status).equalTo(record::getStatus)
+                .set(token).equalTo(record::getToken);
     }
 
     @Generated("org.mybatis.generator.api.MyBatisGenerator")
@@ -140,7 +148,9 @@ public interface UserMapper {
         return UpdateDSL.updateWithMapper(this::update, user)
                 .set(account).equalToWhenPresent(record::getAccount)
                 .set(password).equalToWhenPresent(record::getPassword)
-                .set(username).equalToWhenPresent(record::getUsername);
+                .set(username).equalToWhenPresent(record::getUsername)
+                .set(status).equalToWhenPresent(record::getStatus)
+                .set(token).equalToWhenPresent(record::getToken);
     }
 
     @Generated("org.mybatis.generator.api.MyBatisGenerator")
@@ -149,6 +159,8 @@ public interface UserMapper {
                 .set(account).equalTo(record::getAccount)
                 .set(password).equalTo(record::getPassword)
                 .set(username).equalTo(record::getUsername)
+                .set(status).equalTo(record::getStatus)
+                .set(token).equalTo(record::getToken)
                 .where(id, isEqualTo(record::getId))
                 .build()
                 .execute();
@@ -160,6 +172,8 @@ public interface UserMapper {
                 .set(account).equalToWhenPresent(record::getAccount)
                 .set(password).equalToWhenPresent(record::getPassword)
                 .set(username).equalToWhenPresent(record::getUsername)
+                .set(status).equalToWhenPresent(record::getStatus)
+                .set(token).equalToWhenPresent(record::getToken)
                 .where(id, isEqualTo(record::getId))
                 .build()
                 .execute();

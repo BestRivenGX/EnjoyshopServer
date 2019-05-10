@@ -4,6 +4,6 @@ import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@MapperScan(basePackages = "com.example.demo.dao")
+@MapperScan(basePackages = "com.example.demo5.dao")
 public class MybatisConfig {
 }
