@@ -5,7 +5,15 @@ public class BannerVO {
     int id;
     String name;
     String imgUrl;
+    int type;
 
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
+    }
 
     public int getId() {
         return id;
