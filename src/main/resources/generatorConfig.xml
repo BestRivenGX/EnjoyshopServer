@@ -44,9 +44,16 @@
         <table tableName="query">
             <generatedKey column="id" sqlStatement="JDBC"/>
         </table>
-        <table tableName="Banner">
+        <table tableName="banner">
             <generatedKey column="id" sqlStatement="JDBC"/>
         </table>
+        <table tableName="campaign">
+            <generatedKey column="id" sqlStatement="JDBC"/>
+        </table>
+        <table tableName="homeCampaign">
+            <generatedKey column="id" sqlStatement="JDBC"/>
+        </table>
+
 
     </context>
 </generatorConfiguration>

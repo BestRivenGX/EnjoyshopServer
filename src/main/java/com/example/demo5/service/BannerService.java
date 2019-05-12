@@ -11,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import static com.example.demo5.dao.BannerDynamicSqlSupport.banner;
-import static org.mybatis.dynamic.sql.SqlBuilder.isBetween;
 import static org.mybatis.dynamic.sql.SqlBuilder.isEqualTo;
 
 import java.util.ArrayList;
@@ -40,14 +39,12 @@ public class BannerService {
         for (Banner banner :bannerByType ){
             array.add(toBannerVO(banner));
         }
-//        List<BannerVO> bannerVOList = new ArrayList<>();
-//        for (Banner banner : bannerByType) {
-//            bannerVOList.add(toBannerVO(banner));
-//        }
+
 
         return array;
 
     }
+
     private BannerVO toBannerVO(Banner banner) {
         BannerVO vo = new BannerVO();
         vo.setImgUrl(banner.getImgurl());
