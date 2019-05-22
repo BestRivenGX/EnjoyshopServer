@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.liuyanzhao.sens.mapper.UserMapper">
+  <resultMap id="BaseResultMap" type="com.liuyanzhao.sens.entity.User">
+    <id column="id" jdbcType="INTEGER" property="id"/>
+    <result column="mobi" jdbcType="VARCHAR" property="mobi"/>
+    <result column="email" jdbcType="VARCHAR" property="email"/>
+    <result column="username" jdbcType="VARCHAR" property="username"/>
+    <result column="password" jdbcType="VARCHAR" property="password"/>
+    <result column="logo_url" jdbcType="VARCHAR" property="logoUrl"/>
+    <result column="token" jdbcType="VARCHAR" property="token"/>
+  </resultMap>
+
+</mapper>
