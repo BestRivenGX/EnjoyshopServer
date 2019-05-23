@@ -39,7 +39,13 @@ public class ItemServiceImpl implements ItemService {
     }
 
     @Override
-    public Page<Item> pagingByActivityId(Long activityId, Page<Item> page) {
-        return page.setRecords(itemMapper.findByActivityId(activityId, page));
+    public Page<Item> pagingByCampaignId(Long campaignId, Page<Item> page) {
+        return page.setRecords(itemMapper.findByCampaignId(campaignId, page));
+    }
+
+
+    @Override
+    public Page<Item> pagingItems(Page<Item> page) {
+        return page.setRecords(itemMapper.findAll(page));
     }
 }

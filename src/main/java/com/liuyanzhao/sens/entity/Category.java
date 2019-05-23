@@ -12,8 +12,8 @@ import java.io.Serializable;
  * @date 2019-05-22 21:02
  */
 @Data
-@TableName("activity")
-public class Activity implements Serializable {
+@TableName("category")
+public class Category implements Serializable {
 
     private static final long serialVersionUID = -5144055068797033748L;
 

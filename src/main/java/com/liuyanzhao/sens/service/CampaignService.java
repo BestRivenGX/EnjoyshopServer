@@ -1,6 +1,6 @@
 package com.liuyanzhao.sens.service;
 
-import com.liuyanzhao.sens.entity.Activity;
+import com.liuyanzhao.sens.entity.Campaign;
 
 import java.util.List;
 
@@ -11,35 +11,35 @@ import java.util.List;
  * </pre>
  *
  */
-public interface ActivityService {
+public interface CampaignService {
 
     /**
      * 新增/修改活动
      *
-     * @param activity activity
+     * @param campaign campaign
      * @return Role
      */
-    void saveByActivity(Activity activity);
+    void saveByCampaign(Campaign campaign);
 
     /**
      * 根据活动Id获得活动
      *
-     * @param activityId 活动名
+     * @param campaignId 活动名
      * @return 活动
      */
-    Activity findByActivityId(Long activityId);
+    Campaign findByCampaignId(Long campaignId);
 
     /**
      * 删除活动
      *
-     * @param activityId 活动Id
+     * @param campaignId 活动Id
      */
-    void removeActivity(Long activityId);
+    void removeCampaign(Long campaignId);
 
     /**
      * 活动列表
      * @return
      */
-    List<Activity> findAll();
+    List<Campaign> findAll();
 
 }

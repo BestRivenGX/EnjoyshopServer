@@ -5,14 +5,19 @@
     <id column="id" jdbcType="INTEGER" property="id"/>
     <result column="name" jdbcType="VARCHAR" property="name"/>
     <result column="img_url" jdbcType="VARCHAR" property="imgUrl"/>
-    <result column="description" jdbcType="VARCHAR" property="description"/>
+    <result column="sale" jdbcType="INTEGER" property="sale"/>
+    <result column="user_id" jdbcType="INTEGER" property="userId"/>
+    <result column="campaign_id" jdbcType="INTEGER" property="campaignId"/>
+    <result column="category_id" jdbcType="INTEGER" property="categoryId"/>
     <result column="price" jdbcType="INTEGER" property="price"/>
   </resultMap>
 
 
-    <select id="findByActivityId" resultType="com.liuyanzhao.sens.entity.Item">
-      SELECT * FROM item WHERE id IN
-      (SELECT id FROM item_activity_ref WHERE activity_id = #{activityId})
+    <select id="findByCampaignId" resultType="com.liuyanzhao.sens.entity.Item">
+      SELECT * FROM item WHERE campaign_id = #{campaignId}
     </select>
 
+  <select id="findAll" resultType="com.liuyanzhao.sens.entity.Item">
+      SELECT * FROM item
+    </select>
 </mapper>

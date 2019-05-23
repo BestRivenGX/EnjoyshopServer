@@ -14,6 +14,8 @@ import java.util.List;
 @Mapper
 public interface ItemMapper extends BaseMapper<Item> {
 
-    List<Item> findByActivityId(@Param("activityId") Long activityId, Pagination pagination);
+    List<Item> findByCampaignId(@Param("campaignId") Long campaignId, Pagination pagination);
+
+    List<Item> findAll(Pagination pagination);
 }
 

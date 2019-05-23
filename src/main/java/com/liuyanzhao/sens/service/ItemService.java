@@ -38,10 +38,12 @@ public interface ItemService {
     /**
      * 根据活动Id分页获取所有商品
      *
-     * @param activityId 活动Id
+     * @param campaignId 活动Id
      * @param page 分页信息
      * @return 商品列表
      */
-    Page<Item> pagingByActivityId(Long activityId, Page<Item> page);
+    Page<Item> pagingByCampaignId(Long campaignId, Page<Item> page);
+
+    Page<Item> pagingItems(Page<Item> page);
 
 }
