@@ -11,7 +11,7 @@
  Target Server Version : 50641
  File Encoding         : utf-8
 
- Date: 05/22/2019 22:33:14 PM
+ Date: 05/23/2019 13:26:36 PM
 */
 
 SET NAMES utf8;
@@ -26,6 +26,28 @@ CREATE TABLE `activity` (
   `name` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+--  Table structure for `address`
+-- ----------------------------
+DROP TABLE IF EXISTS `address`;
+CREATE TABLE `address` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `user_id` bigint(20) DEFAULT NULL,
+  `consignee` varchar(255) DEFAULT NULL,
+  `phone` varchar(255) DEFAULT NULL,
+  `addr` varchar(255) DEFAULT NULL,
+  `zip_code` varchar(255) DEFAULT NULL,
+  `is_default` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+--  Records of `address`
+-- ----------------------------
+BEGIN;
+INSERT INTO `address` VALUES ('1', '1', '张三', '13512341234', '广东省深圳市福田区福华路1234号', '123456', '0'), ('2', '1', '张三', '13512341234', 'XXXXXXXXX', '111111', '0'), ('3', '1', '张三', '13512341234', 'XXXXXXXXX', '111111', '0');
+COMMIT;
 
 -- ----------------------------
 --  Table structure for `item`

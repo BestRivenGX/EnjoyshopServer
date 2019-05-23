@@ -37,8 +37,17 @@ public class Address implements Serializable {
 
     private String zipCode;
 
-    private Boolean isDefault;
+    private Integer isDefault = 0;
 
 
+    public Address() {
+    }
 
+    public Address(Long userId, String consignee, String phone, String addr, String zipCode) {
+        this.userId = userId;
+        this.consignee = consignee;
+        this.phone = phone;
+        this.addr = addr;
+        this.zipCode = zipCode;
+    }
 }
