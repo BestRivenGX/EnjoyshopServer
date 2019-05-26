@@ -48,4 +48,11 @@ public class ItemServiceImpl implements ItemService {
     public Page<Item> pagingItems(Page<Item> page) {
         return page.setRecords(itemMapper.findAll(page));
     }
+
+
+    @Override
+    public Page<Item> pagingByCategoryId(Long categoryId, Page<Item> page) {
+        return page.setRecords(itemMapper.findByCategoryId(categoryId, page));
+    }
+
 }

@@ -1,14 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.liuyanzhao.sens.mapper.AddressMapper">
-  <resultMap id="BaseResultMap" type="com.liuyanzhao.sens.entity.Address">
-    <id column="id" jdbcType="INTEGER" property="id"/>
-    <result column="user_id" jdbcType="INTEGER" property="userId"/>
-    <result column="consignee" jdbcType="VARCHAR" property="consignee"/>
-    <result column="phone" jdbcType="VARCHAR" property="phone"/>
-    <result column="addr" jdbcType="VARCHAR" property="addr"/>
-    <result column="zip_code" jdbcType="VARCHAR" property="zipCode"/>
-    <result column="is_default" jdbcType="INTEGER" property="isDefault"/>
-  </resultMap>
+    <resultMap id="BaseResultMap" type="com.liuyanzhao.sens.entity.Address">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="user_id" jdbcType="INTEGER" property="userId"/>
+        <result column="consignee" jdbcType="VARCHAR" property="consignee"/>
+        <result column="phone" jdbcType="VARCHAR" property="phone"/>
+        <result column="addr" jdbcType="VARCHAR" property="addr"/>
+        <result column="zip_code" jdbcType="VARCHAR" property="zipCode"/>
+        <result column="is_default" jdbcType="INTEGER" property="isDefault"/>
+    </resultMap>
+
+    <update id="resetDefaultAddress">
+        update address set is_default = 0 where user_id =  #{value}
+    </update>
 
 </mapper>

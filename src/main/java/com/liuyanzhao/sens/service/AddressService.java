@@ -44,4 +44,11 @@ public interface AddressService {
      * @return
      */
     List<Address> findByUserId(Long userId);
+
+    /**
+     * 去掉某个用户的默认地址
+     *
+     * @param userId 用户ID
+     */
+    void resetDefaultAddress(Long userId);
 }

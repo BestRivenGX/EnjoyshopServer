@@ -17,6 +17,10 @@
       SELECT * FROM item WHERE campaign_id = #{campaignId}
     </select>
 
+  <select id="findByCategoryId" resultType="com.liuyanzhao.sens.entity.Item">
+      SELECT * FROM item WHERE category_id = #{categoryId}
+    </select>
+
   <select id="findAll" resultType="com.liuyanzhao.sens.entity.Item">
       SELECT * FROM item
     </select>

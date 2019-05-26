@@ -3,7 +3,10 @@
 <mapper namespace="com.liuyanzhao.sens.mapper.CampaignMapper">
   <resultMap id="BaseResultMap" type="com.liuyanzhao.sens.entity.Campaign">
     <id column="id" jdbcType="INTEGER" property="id"/>
-    <result column="name" jdbcType="VARCHAR" property="name"/>
+    <result column="title" jdbcType="VARCHAR" property="title"/>
+    <result column="cp_one" jdbcType="VARCHAR" property="cpOne"/>
+    <result column="cp_two" jdbcType="VARCHAR" property="cpTwo"/>
+    <result column="cp_three" jdbcType="VARCHAR" property="cpThree"/>
   </resultMap>
 
 </mapper>

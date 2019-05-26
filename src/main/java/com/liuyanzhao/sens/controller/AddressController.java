@@ -1,5 +1,6 @@
 package com.liuyanzhao.sens.controller;
 
+import com.google.common.base.Strings;
 import com.liuyanzhao.sens.entity.Address;
 import com.liuyanzhao.sens.entity.User;
 import com.liuyanzhao.sens.service.AddressService;
@@ -40,6 +41,54 @@ public class AddressController {
         Address address = new Address(userId, consignee, phone, addr, zipCode);
 
         try {
+            addressService.saveByAddress(address);
+            return new JsonResult(1, "操作成功！");
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new JsonResult(0, "操作失败！");
+        }
+    }
+
+    /**
+     * 更新地址
+     *
+     * @return
+     */
+    @PostMapping("/update")
+    public JsonResult update(@RequestParam("id") Long id,
+                             @RequestParam(value = "consignee", required = false) String consignee,
+                             @RequestParam(value = "phone", required = false) String phone,
+                             @RequestParam(value = "addr", required = false) String addr,
+                             @RequestParam(value = "zip_code", required = false) String zipCode,
+                             @RequestParam(value = "is_default", required = false) Integer isDefault) {
+
+
+        try {
+            Address address = addressService.findByAddressId(id);
+            if (address == null) {
+                return new JsonResult(0, "地址不存在！");
+            }
+            //如果设置该地址为默认地址，去掉其他默认地址
+            if (isDefault == 1) {
+                addressService.resetDefaultAddress(address.getUserId());
+            }
+            if (!Strings.isNullOrEmpty(consignee)) {
+                address.setConsignee(consignee);
+            }
+            if (!Strings.isNullOrEmpty(phone)) {
+                address.setPhone(phone);
+            }
+            if (!Strings.isNullOrEmpty(addr)) {
+                address.setAddr(addr);
+            }
+            if (!Strings.isNullOrEmpty(zipCode)) {
+                address.setZipCode(zipCode);
+            }
+            if (isDefault != null && isDefault == 1) {
+                address.setIsDefault(isDefault);
+            } else {
+                address.setIsDefault(0);
+            }
             addressService.saveByAddress(address);
             return new JsonResult(1, "操作成功！");
         } catch (Exception e) {

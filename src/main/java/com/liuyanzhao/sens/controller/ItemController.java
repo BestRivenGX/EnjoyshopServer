@@ -29,20 +29,22 @@ public class ItemController {
     private ItemService itemService;
 
     /**
-     * 添加地址
+     * 添加商品
      *
      * @return
      */
     @PostMapping("/release/create")
     public JsonResult create(@RequestParam("user_id") Long userId,
+                             @RequestParam("category_id") Long categoryId,
+                             @RequestParam("campaign_id") Long campaignId,
                              @RequestParam("name") String name,
                              @RequestParam("price") Integer price,
-                             @RequestParam(required = false,value = "img") MultipartFile file) throws IOException {
+                             @RequestParam(required = false, value = "img") MultipartFile file) throws IOException {
         String img = "";
         if (file != null) {
             img = FileUtils.upload(file.getInputStream());
         }
-        Item item = new Item(name, img, price, userId);
+        Item item = new Item(name, img, price, userId, categoryId, campaignId);
         try {
             itemService.saveByItem(item);
             return new JsonResult(1, "操作成功！");
@@ -53,7 +55,7 @@ public class ItemController {
     }
 
     /**
-     * 获得地址列表
+     * 获得所有商品列表
      *
      * @return
      */
@@ -80,5 +82,67 @@ public class ItemController {
         }
     }
 
+    /**
+     * 根据分类Id获得商品分页
+     *
+     * @return
+     */
+    @GetMapping("/wares/list")
+    public Object pagingByCategoryId(
+            @RequestParam(value = "categoryId") Long categoryId,
+            @RequestParam(value = "curPage", defaultValue = "0") Integer page,
+            @RequestParam(value = "pageSize", defaultValue = "10") Integer size) {
 
+        Map<String, Object> map = new HashMap<>();
+        map.put("copyright", "本 API 接口只允许本人使用,其他机构或者个人使用均为侵权行为");
+        try {
+            Page pageable = new Page(page, size);
+            Page<Item> pagingItems = itemService.pagingByCategoryId(categoryId, pageable);
+            map.put("totalCount", pagingItems.getTotal());
+            map.put("currentPage", pagingItems.getCurrent());
+            map.put("totalPage", pagingItems.getPages());
+            map.put("pageSize", pagingItems.getSize());
+            map.put("orders", pagingItems.getOrderByField());
+            map.put("list", pagingItems.getRecords());
+            return map;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new JsonResult(0, "操作失败！");
+        }
+    }
+
+    /**
+     * 根据分类Id获得商品分页
+     *
+     * @return
+     */
+    @GetMapping("/wares/campaign/list")
+    public Object pagingByCampaignId(
+            @RequestParam(value = "campaignId") Long campaignId,
+            @RequestParam(value = "orderBy",defaultValue = "0") Integer orderBy,
+            @RequestParam(value = "curPage", defaultValue = "0") Integer page,
+            @RequestParam(value = "pageSize", defaultValue = "10") Integer size) {
+
+        Map<String, Object> map = new HashMap<>();
+        map.put("copyright", "本 API 接口只允许本人使用,其他机构或者个人使用均为侵权行为");
+        try {
+            Page pageable = new Page(page, size);
+            if (orderBy == 1) {
+                pageable = new Page(page, size, "sale", false);
+            } else if (orderBy == 2) {
+                pageable = new Page(page, size, "price", true);
+            }
+            Page<Item> pagingItems = itemService.pagingByCampaignId(campaignId, pageable);
+            map.put("totalCount", pagingItems.getTotal());
+            map.put("currentPage", pagingItems.getCurrent());
+            map.put("totalPage", pagingItems.getPages());
+            map.put("pageSize", pagingItems.getSize());
+            map.put("orders", pagingItems.getOrderByField());
+            map.put("list", pagingItems.getRecords());
+            return map;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new JsonResult(0, "操作失败！");
+        }
+    }
 }

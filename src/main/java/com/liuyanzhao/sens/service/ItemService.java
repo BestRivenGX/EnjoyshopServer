@@ -46,4 +46,16 @@ public interface ItemService {
 
     Page<Item> pagingItems(Page<Item> page);
 
+
+    /**
+     * 根据分类Id分页获取所有商品
+     *
+     * @param categoryId 分类Id
+     * @param page 分页信息
+     * @return 商品列表
+     */
+    Page<Item> pagingByCategoryId(Long categoryId, Page<Item> page);
+
+
+
 }

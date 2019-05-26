@@ -8,6 +8,8 @@ import lombok.Data;
 import java.io.Serializable;
 
 /**
+ *
+ * 活动
  * @author 言曌
  * @date 2019-05-22 21:02
  */
@@ -23,8 +25,23 @@ public class Campaign implements Serializable {
     @TableId(type = IdType.AUTO)
     private Long id;
 
-    private String name;
+    private String title;
 
+    private String cpOne;
 
+    private String cpTwo;
+
+    private String cpThree;
+
+    public Campaign() {
+    }
+
+    public Campaign(Long id, String title, String cpOne, String cpTwo, String cpThree) {
+        this.id = id;
+        this.title = title;
+        this.cpOne = cpOne;
+        this.cpTwo = cpTwo;
+        this.cpThree = cpThree;
+    }
 }
 

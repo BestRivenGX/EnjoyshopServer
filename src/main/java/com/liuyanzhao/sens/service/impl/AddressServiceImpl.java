@@ -48,4 +48,9 @@ public class AddressServiceImpl implements AddressService {
         map.put("user_id",userId);
         return addressMapper.selectByMap(map);
     }
+
+    @Override
+    public void resetDefaultAddress(Long userId) {
+        addressMapper.resetDefaultAddress(userId);
+    }
 }

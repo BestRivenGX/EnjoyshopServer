@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.liuyanzhao.sens.mapper.CategoryMapper">
-  <resultMap id="BaseResultMap" type="com.liuyanzhao.sens.entity.Category">
-    <id column="id" jdbcType="INTEGER" property="id"/>
-    <result column="name" jdbcType="VARCHAR" property="name"/>
-  </resultMap>
+    <resultMap id="BaseResultMap" type="com.liuyanzhao.sens.entity.Category">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="sort" jdbcType="INTEGER" property="sort"/>
+    </resultMap>
+
+    <select id="findAll" resultType="com.liuyanzhao.sens.entity.Category">
+    SELECT * FROM category ORDER BY  `sort` ASC
+  </select>
+
 
 </mapper>

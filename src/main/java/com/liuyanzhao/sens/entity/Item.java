@@ -57,4 +57,13 @@ public class Item implements Serializable {
         this.price = price;
         this.userId = userId;
     }
+
+    public Item(String name, String imgUrl, Integer price, Long userId, Long categoryId, Long campaignId) {
+        this.name = name;
+        this.imgUrl = imgUrl;
+        this.price = price;
+        this.userId = userId;
+        this.categoryId = categoryId;
+        this.campaignId = campaignId;
+    }
 }

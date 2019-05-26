@@ -16,6 +16,8 @@ public interface ItemMapper extends BaseMapper<Item> {
 
     List<Item> findByCampaignId(@Param("campaignId") Long campaignId, Pagination pagination);
 
+    List<Item> findByCategoryId(@Param("categoryId") Long categoryId, Pagination pagination);
+
     List<Item> findAll(Pagination pagination);
 }
 
