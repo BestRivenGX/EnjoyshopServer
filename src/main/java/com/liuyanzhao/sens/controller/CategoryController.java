@@ -5,6 +5,8 @@ import com.liuyanzhao.sens.service.CategoryService;
 import com.liuyanzhao.sens.utils.JsonResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -26,13 +28,12 @@ public class CategoryController {
      * @return
      */
     @GetMapping("/category/list")
-    public JsonResult list() {
+    public List<Category> list() {
         try {
-            List<Category> categoryList = categoryService.findAll();
-            return new JsonResult(1, "操作成功！", categoryList);
+            return categoryService.findAll();
         } catch (Exception e) {
             e.printStackTrace();
-            return new JsonResult(0, "操作失败！");
+            return new ArrayList<>();
         }
     }
 

@@ -10,6 +10,7 @@ import com.liuyanzhao.sens.utils.Md5Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -103,14 +104,13 @@ public class AddressController {
      * @return
      */
     @GetMapping("/list")
-    public JsonResult listAddrByUserId(@RequestParam("user_id") Long userId) {
+    public List<Address> listAddrByUserId(@RequestParam("user_id") Long userId) {
 
         try {
-            List<Address> addressList = addressService.findByUserId(userId);
-            return new JsonResult(1, "操作成功！", addressList);
+            return addressService.findByUserId(userId);
         } catch (Exception e) {
             e.printStackTrace();
-            return new JsonResult(0, "操作失败！");
+           return new ArrayList<>();
         }
     }
 

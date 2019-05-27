@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -29,13 +30,12 @@ public class CampaignController {
      * @return
      */
     @GetMapping("/campaign/recommend")
-    public JsonResult list() {
+    public   List<Campaign>  list() {
         try {
-            List<Campaign> campaignList = campaignService.findAll();
-            return new JsonResult(1, "操作成功！", campaignList);
+            return campaignService.findAll();
         } catch (Exception e) {
             e.printStackTrace();
-            return new JsonResult(0, "操作失败！");
+            return new ArrayList<>();
         }
     }
 

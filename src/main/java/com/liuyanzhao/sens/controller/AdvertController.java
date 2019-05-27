@@ -6,6 +6,7 @@ import com.liuyanzhao.sens.utils.JsonResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -27,13 +28,12 @@ public class AdvertController {
      * @return
      */
     @GetMapping("/banner/query")
-    public JsonResult list(@RequestParam(value = "type", defaultValue = "1") Integer type) {
+    public List<Advert> list(@RequestParam(value = "type", defaultValue = "1") Integer type) {
         try {
-            List<Advert> avertList = advertService.findByType(type);
-            return new JsonResult(1, "操作成功！", avertList);
+            return advertService.findByType(type);
         } catch (Exception e) {
             e.printStackTrace();
-            return new JsonResult(0, "操作失败！");
+            return new ArrayList<>();
         }
     }
 
